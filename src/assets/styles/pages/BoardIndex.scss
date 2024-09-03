@@ -1,0 +1,48 @@
+.board-index {
+    grid-column: 2/3;
+    margin-left: 10px;
+    overflow: scroll;
+
+.typeModal_2e88e127f4 {
+    box-shadow: var(--box-shadow-small, #e6e9ef);
+}
+.border-index-body {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.board-list-dialog {
+    width: 100%;
+    padding-inline: 24px;
+    padding-block-start: 12px;
+    
+  }
+
+    .collapsible-header {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        
+
+
+        .collapsible-title {
+            font-size: rem(18px);
+            display: inline-block;
+            font-weight: 700;
+            margin-left: 4px;
+        }
+    }
+    .board-index-template {
+
+        
+        .board-index-banner {
+            object-fit: cover; 
+            border: 1px solid #e6e9ef;
+            border-radius: 8px; 
+            width: 100%; 
+
+        }
+    
+    }
+    
+}

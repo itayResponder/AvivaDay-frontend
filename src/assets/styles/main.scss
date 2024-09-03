@@ -1,0 +1,50 @@
+@import 'setup/variables';
+@import 'setup/functions';
+@import 'setup/mixins';
+@import 'setup/typography';
+
+@import 'basics/helpers';
+@import 'basics/layout';
+@import 'basics/base';
+@import 'basics/forms';
+
+@import 'pages/AboutUs';
+@import 'pages/HomePage';
+@import 'pages/UserDetails';
+@import 'pages/TaskDetails';
+@import 'pages/LoginSignup';
+@import 'pages/Dashboard';
+@import 'pages/LoginSignUpMonday';
+
+@import 'cmps/list';
+@import 'cmps/preview';
+
+@import 'cmps/AppHeader';
+@import 'cmps/Sidebar';
+@import 'cmps/AppFooter';
+@import 'cmps/UserMsg';
+@import 'cmps/TaskComments';
+@import 'cmps/ActivityLog';
+@import 'cmps/ActivityModal';
+@import 'cmps/Groupfilters/GroupFilter';
+@import 'cmps/TaskPreview';
+@import 'cmps/TaskList';
+@import 'cmps/TaskActivity.scss';
+@import 'cmps/TaskAttributes';
+@import 'cmps/GroupList';
+@import 'cmps/GroupPreview';
+@import 'cmps/Kanban';
+@import 'cmps/TaskCard';
+@import 'cmps/DatePicker';
+@import 'pages/BoardIndex';
+@import 'cmps/BoardPreview';
+@import 'cmps/BoardList';
+@import 'cmps/BoardDetails';
+@import 'cmps/BoardBuilder';
+@import 'cmps/AiLoader';
+
+@import 'cmps/AddBoard';
+@import 'cmps/Loader';
+
+@import 'cmps/Groupfilters/GroupPersonFilter.scss';
+@import 'cmps/Groupfilters/GroupSort.scss';

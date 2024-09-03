@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    line-height: 1.6;
+    color: $Mgray4;
+}
+
+body {
+    margin: 0 auto;
+    padding: 0 auto;
+    font-family: $font-family-primary;
+    font-size: rem(18px);
+    overflow: auto;
+    background-color: $Mbgr3;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-family-secondary;
+}
+
+h1 {
+    .bold {
+        @include vibe-heading(h1, $font-weight-bold);
+    }
+    .normal {
+        @include vibe-heading(h1, $font-weight-normal);
+    }
+    .light {
+        @include vibe-heading(h1, $font-weight-light);
+    }
+}
+
+h2 {
+    .bold {
+        @include vibe-heading(h2, $font-weight-bold);
+    }
+    .normal {
+        @include vibe-heading(h2, $font-weight-normal);
+    }
+    .light {
+        @include vibe-heading(h2, $font-weight-light);
+    }
+}
+
+h3 {
+    .bold {
+        @include vibe-heading(h3, $font-weight-bold);
+    }
+    .normal {
+        @include vibe-heading(h3, $font-weight-normal);
+    }
+    .light {
+        @include vibe-heading(h3, $font-weight-light);
+    }
+}
+
+h4 {
+    .bold {
+        @include vibe-heading(h4, $font-weight-bold);
+    }
+    .normal {
+        @include vibe-heading(h4, $font-weight-normal);
+    }
+    .light {
+        @include vibe-heading(h4, $font-weight-light);
+    }
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+input {
+    max-width: 100%;
+}
+
+.scrollable {
+    overflow: auto;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(187, 190, 204);
+}

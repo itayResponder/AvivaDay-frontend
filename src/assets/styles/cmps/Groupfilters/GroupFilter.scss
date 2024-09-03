@@ -1,0 +1,113 @@
+.board-filter {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    background-color: $Mbgr1;
+    padding: 0.5rem 0;
+    border-radius: 8px;
+}
+
+.search input:focus {
+    margin: 0;
+    height: max-content;
+    outline: none;
+    border-color: #007bff;
+    transform: scale(1.05);
+}
+
+.filter-item,
+.person,
+.filter,
+.hide {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    font-size: 16px;
+    line-height: 22.5px;
+    font-family: $font-family-primary;
+
+    border-radius: 4px;
+
+    &:hover {
+        background-color: #e0e0e0;
+    }
+}
+.search {
+    padding: 4px;
+}
+
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-header {
+    padding: 16px 24px 0;
+    font-family: $font-family-primary;
+    font-size: 16px;
+    &.second {
+        padding: 0 5px;
+        font-size: 12px;
+        color: gray;
+    }
+}
+.clear-all {
+    font-family: $font-family-primary;
+    font-size: 16px;
+    color: gray;
+
+    &:hover {
+        background-color: white;
+        color: rgb(66, 64, 64);
+    }
+}
+
+.column-filter {
+    padding: 0 24px 16px;
+}
+.column-filter label {
+    margin-inline-end: 30px;
+    font-family: $font-family-primary;
+    color: $gray4;
+}
+
+.column,
+input[type='text'],
+input[type='password'],
+input[type='email'],
+select {
+    cursor: pointer;
+    font-family: $font-family-primary;
+    color: $gray4;
+    padding: 0.3rem;
+    border: 1.7px solid $gray1;
+    border-radius: 0.25rem;
+    font-size: 0.9375rem;
+    margin: 4px;
+    width: 200px;
+    height: 40px;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s ease;
+
+    &:hover {
+        border: 1.7px solid $gray4;
+    }
+
+    &.focused,
+    &.has-value {
+        border: 1.7px solid $clr8;
+    }
+}
+
+.column:focus,
+input[type='text']:focus {
+    border: 1.7px solid $clr8;
+}
+
+.filter-svg {
+    color: #007bff;
+}
+.custom-avatar {
+    cursor: pointer;
+}
