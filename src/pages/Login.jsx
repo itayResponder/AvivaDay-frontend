@@ -32,7 +32,6 @@ export function Login() {
         const value = ev.target.value
         setCredentials({ ...credentials, [field]: value })
     }
-console.log({users});
 
     return (
         <section className='login-container'>
