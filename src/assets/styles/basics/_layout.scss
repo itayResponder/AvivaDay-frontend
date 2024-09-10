@@ -74,7 +74,29 @@
         height: 100%;
     }
     .add-task-row {
-        display: none;
+        border-block-end: 1px solid $tableBorderClr;
+        --sticky-cell-hover-background: none;
+        display: flex;
+
+        position: sticky;
+        left: 0;
+        opacity: 0.6;
+        .add-task-row-cell {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .add-task-input {
+                margin: 0;
+                padding: 0;
+                outline: none;
+                border: none;
+                cursor: text;
+                height: fit-content;
+                &:focus-visible {
+                    border: 1px solid var(--primary-color);
+                }
+            }
+        }
     }
     .board-details .board-details-header .board-details-edit span button .board-title {
         font-size: 1.5em;
