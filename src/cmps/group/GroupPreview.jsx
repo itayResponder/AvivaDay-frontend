@@ -21,6 +21,10 @@ function GroupPreview({
 }) {
     const [updatedGroupTitle, setUpdatedGroupTitle] = useState(group.title)
     const [groupColor, setGroupColor] = useState(group.style?.backgroundColor || '#579bfc')
+    const [isColorPickerOpen, setIsColorPickerOpen] = useState(false);
+
+    const colorOptions = ['#579bfc', '#34d1bf', '#f39c12', '#e74c3c', '#8e44ad', '#2ecc71'];
+
 
     const handleTitleChange = value => {
         setUpdatedGroupTitle(value)
@@ -32,6 +36,11 @@ function GroupPreview({
         }
         setIsEditingTitle(false)
     }
+
+    const handleColorSelect = (color) => {
+        setGroupColor(color);
+        setIsColorPickerOpen(false); 
+      };
 
     return (
         <>
@@ -75,6 +84,25 @@ function GroupPreview({
                             style={{ color: groupColor }}
                             id='editable-group-title'
                         />
+                        <div className="color-circle-wrapper">
+              <div
+                className="color-circle"
+                style={{ backgroundColor: groupColor, width: '20px', height: '20px', borderRadius: '50%', cursor: 'pointer', marginLeft: '10px' }}
+                onClick={() => setIsColorPickerOpen(!isColorPickerOpen)}
+              ></div>
+              {isColorPickerOpen && (
+                <div className="color-options">
+                  {colorOptions.map((color) => (
+                    <div
+                      key={color}
+                      className="color-option"
+                      style={{ backgroundColor: color, width: '20px', height: '20px', borderRadius: '50%', cursor: 'pointer', margin: '5px' }}
+                      onClick={() => handleColorSelect(color)}
+                    ></div>
+                  ))}
+                </div>
+              )}
+            </div>
                     </div>
                 </div>
                 {!isCollapsed && (
@@ -93,6 +121,28 @@ function GroupPreview({
                     </div>
                 )}
             </div>
+            <style jsx>{`
+        .color-circle-wrapper {
+          position: relative;
+        }
+        .color-options {
+          display: flex;
+          position: absolute;
+          top: 30px;
+          left: 0;
+          z-index: 10;
+          background-color: white;
+          padding: 10px;
+          border-radius: 5px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .color-option {
+          transition: transform 0.2s;
+        }
+        .color-option:hover {
+          transform: scale(1.2);
+        }
+      `}</style>
         </>
     )
 }
