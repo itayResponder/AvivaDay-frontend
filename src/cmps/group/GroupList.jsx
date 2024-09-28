@@ -28,7 +28,7 @@ export function GroupList({ boardsToDisplay, view }) {
     const [initialCollapsedStates, setInitialCollapsedStates] = useState({})
     const [selectedTasks, setSelectedTasks] = useState([])
     const [statuses, setStatuses] = useState(initialStatuses)
-    
+
     useEffect(() => {
         const initialCollapsedStates = {}
         currBoard?.groups.forEach(group => {

@@ -22,18 +22,20 @@ function GroupPreview({
     const [updatedGroupTitle, setUpdatedGroupTitle] = useState(group.title)
     const [groupColor, setGroupColor] = useState(group.style?.backgroundColor || '#579bfc')
     const [isColorPickerOpen, setIsColorPickerOpen] = useState(false)
+
     const colorPickerRef = useRef(null) // Ref for color picker
     const colorOptions = ['#579bfc', '#34d1bf', '#f39c12', '#e74c3c', '#8e44ad', '#2ecc71']
 
     useEffect(() => {
-        const handleGroupUpdated = (groupData) => {
-            setGroupColor(groupData.style.backgroundColor)
+        const updatedGroup = {
+            ...group,
+            style: {
+                ...group.style,
+                backgroundColor: groupColor, // Include the updated color here
+            },
         };
-        socketService.on('group-updated', handleGroupUpdated);
-        return () => {
-            socketService.off('group-updated', handleGroupUpdated);
-        };
-    },[])
+        onUpdateGroup(board._id, group._id, updatedGroup);
+    },[groupColor])
 
     const handleTitleChange = value => {
         setUpdatedGroupTitle(value)
@@ -47,14 +49,6 @@ function GroupPreview({
 
     const handleColorSelect = (color) => {
         setGroupColor(color)
-        
-        onUpdateGroup(board._id, group._id, {
-            ...group,
-            style: {
-                ...group.style,
-                backgroundColor: color 
-            }
-        })
         setIsColorPickerOpen(false) // Close after selecting a color
     }
 
@@ -163,6 +157,7 @@ function GroupPreview({
                             onSort={onSort}
                             sorting={sorting}
                             onAddGroup={onAddGroup}
+                            groupColor={groupColor}
                         />
                     </div>
                 )}
