@@ -1,0 +1,40 @@
+.color-circle-wrapper {
+    position: relative;
+  }
+
+  .color-options {
+    display: flex;
+    flex-direction: row; /* Ensure colors appear in a row */
+    position: absolute;
+    top: 30px;
+    left: 0;
+    z-index: 10;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .color-option {
+    transition: transform 0.2s;
+    cursor: pointer;
+    margin-right: 5px; /* Space between color circles */
+  }
+
+  .color-option:last-child {
+    margin-right: 0; /* Remove margin on the last color option */
+  }
+
+  .color-option:hover {
+    transform: scale(1.2); /* Scale effect on hover */
+  }
+
+  /* Ensure proper layout on small screens */
+  @media (max-width: 740px) {
+    .color-options {
+      position: static; /* Make it behave naturally in the flow on smaller screens */
+      width: 100%; /* Ensure it uses the full width */
+      justify-content: flex-start;
+      padding: 5px;
+    }
+  }

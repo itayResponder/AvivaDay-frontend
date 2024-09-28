@@ -6,6 +6,32 @@
     }
 }
 
+.add-task-row {
+    border-block-end: 1px solid $tableBorderClr;
+    --sticky-cell-hover-background: none;
+    display: flex;
+
+    position: sticky;
+    left: 0;
+    opacity: 0.6;
+    .add-task-row-cell {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .add-task-input {
+            margin: 0;
+            padding: 0;
+            outline: none;
+            border: none;
+            cursor: text;
+            height: fit-content;
+            &:focus-visible {
+                border: 1px solid var(--primary-color);
+            }
+        }
+    }
+}
+
 @media (max-width: 740px) {
     .app-header {
         .button_adff134b24 {
@@ -27,8 +53,7 @@
         height: 100%;
         width: 100%;
     }
-    .summary-row,
-    .add-task-row {
+    .summary-row{
         display: none;
     }
 
