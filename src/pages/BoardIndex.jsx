@@ -5,7 +5,6 @@ import { addBoard, loadBoards, removeBoard } from '../store/actions/board.action
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { BoardList } from '../cmps/BoardList'
 import { Button, DialogContentContainer, Flex, Text } from 'monday-ui-react-core'
-import { login } from '../store/actions/user.actions'
 import { useNavigate } from 'react-router'
 
 import boardIndexBanner from '../assets/img/monday-banners/monday-banner-index.jpeg'
@@ -16,7 +15,7 @@ import {
     socketService,
 } from '../services/socket.service'
 import { useDispatch } from 'react-redux'
-import { Dashboard } from './Dashboard'
+import { STORAGE_KEY_LOGGEDIN_USER } from '../services/user/user.service.local'
 
 export function BoardIndex() {
     const [isCollapsed, setIsCollapsed] = useState(false)
@@ -47,7 +46,7 @@ export function BoardIndex() {
     }, [boards.length])
 
 async function loadUser() {
-    const credentials = JSON.parse(sessionStorage.getItem('loggedinUser'))
+    const credentials = JSON.parse(localStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
     if(!credentials)
     navigate('/login')
 }

@@ -25,12 +25,13 @@ import {
 import { SOCKET_EMIT_SET_TOPIC, socketService } from '../services/socket.service'
 import { useDispatch } from 'react-redux'
 import { debounce } from '../services/util.service'
+import { STORAGE_KEY_LOGGEDIN_USER } from '../services/user/user.service.local'
 
 export function BoardDetails() {
     const { boardId } = useParams()
     const currBoard = useSelector(storeState => storeState.boardModule.boards.find(board => board._id === boardId))
     const dispatch = useDispatch()
-
+    const [loggedInUser, setLoggedInUser]  = useState(JSON.parse(localStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)))
     const [isStarredBoard, setIsStarredBoard] = useState(currBoard?.isStarred)
     const [boardsToDisplay, setBoardsToDisplay] = useState(currBoard?.groups || [])
     const isLoading = useSelector(storeState => storeState.boardModule.flag.isLoading)
@@ -44,6 +45,10 @@ export function BoardDetails() {
             socketService.off('board-changed')
         }
     }, [])
+    
+    useEffect(() => {
+        if(!loggedInUser) navigate('/login')
+    })
 
     useEffect(() => {
         loadBoards()
