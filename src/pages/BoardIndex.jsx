@@ -5,6 +5,8 @@ import { addBoard, loadBoards, removeBoard } from '../store/actions/board.action
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { BoardList } from '../cmps/BoardList'
 import { Button, DialogContentContainer, Flex, Text } from 'monday-ui-react-core'
+import { login } from '../store/actions/user.actions'
+import { useNavigate } from 'react-router'
 
 import boardIndexBanner from '../assets/img/monday-banners/monday-banner-index.jpeg'
 import {
@@ -22,10 +24,13 @@ export function BoardIndex() {
     const prevBoardsCount = useRef(boards.length)
     const isLoading = useSelector(storeState => storeState.boardModule.flag.isLoading)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     useEffect(() => {
+        loadUser()
         loadBoards()
         socketService.emit(SOCKET_EMIT_SET_TOPIC, 'board')
+        
     }, [])
 
     useEffect(() => {
@@ -40,6 +45,12 @@ export function BoardIndex() {
     useEffect(() => {
         prevBoardsCount.current = boards.length
     }, [boards.length])
+
+async function loadUser() {
+    const credentials = JSON.parse(sessionStorage.getItem('loggedinUser'))
+    if(!credentials)
+    navigate('/login')
+}
 
     async function onRemoveBoard(boardId) {
         try {
