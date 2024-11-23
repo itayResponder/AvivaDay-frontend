@@ -5,10 +5,24 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
 import logoImg from '../assets/img/logo/only-logo.png'
 import { Avatar, Button } from 'monday-ui-react-core'
+import { useEffect } from 'react'
+import { login } from '../store/actions/user.actions'
+import { STORAGE_KEY_LOGGEDIN_USER } from '../services/user/user.service.local'
 
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
     const navigate = useNavigate()
+    
+    useEffect(() => {
+        if(!user) {
+            const credentials = JSON.parse(localStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+            if(!credentials) {
+                navigate('/login')
+            } else {
+                onLogin(credentials)
+            }
+        }
+    },[user])
 
     async function onLogout() {
         try {
@@ -18,6 +32,11 @@ export function AppHeader() {
         } catch (err) {
             showErrorMsg('Cannot logout')
         }
+    }
+
+    async function onLogin(credentials) {
+        await login(credentials)
+        navigate('/board')
     }
 
     return (

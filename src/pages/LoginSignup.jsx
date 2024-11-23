@@ -6,7 +6,6 @@ export function LoginSignup() {
         <div className="login-page">
             <nav>
                 <NavLink to=".">Login</NavLink>
-                <NavLink to="signup">Signup</NavLink>
             </nav>
             <Outlet/>
         </div>

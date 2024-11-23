@@ -30,6 +30,7 @@ import { STORAGE_KEY_LOGGEDIN_USER } from '../services/user/user.service.local'
 export function BoardDetails() {
     const { boardId } = useParams()
     const currBoard = useSelector(storeState => storeState.boardModule.boards.find(board => board._id === boardId))
+    const boards = useSelector(storeState => storeState.boardModule.boards)
     const dispatch = useDispatch()
     const [loggedInUser, setLoggedInUser]  = useState(JSON.parse(localStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)))
     const [isStarredBoard, setIsStarredBoard] = useState(currBoard?.isStarred)
@@ -38,9 +39,17 @@ export function BoardDetails() {
     const [activeTabIndex, setActiveTabIndex] = useState(0)
 
     const navigate = useNavigate()
-
+    
     useEffect(() => {
         socketService.on('board-changed', onBoardChanged)
+        if(!loggedInUser) {
+            const credentials = JSON.parse(localStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+            if(!credentials) {
+                navigate('/login')
+            } else {
+                onLogin(credentials)
+            }
+        }
         return () => {
             socketService.off('board-changed')
         }

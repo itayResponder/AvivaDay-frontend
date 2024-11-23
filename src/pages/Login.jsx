@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router'
 
 import { userService } from '../services/user'
 import { login } from '../store/actions/user.actions'
+import { loadBoards } from '../store/actions/board.action'
+
 
 export function Login() {
     const [users, setUsers] = useState([])
@@ -24,6 +26,7 @@ export function Login() {
 
         if (!credentials.email) return
         await login(credentials)
+        loadBoards()
         navigate('/board')
     }
 
